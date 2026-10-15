@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exam Paper Browser</title>
+  <meta name="description" content="Quickly browse Leaving Certificate exam papers and marking schemes from examinations.ie." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>Exam Paper Browser</h1>
+      <p class="tagline">Leaving Certificate papers and marking schemes, one click away.</p>
+    </div>
+  </header>
+
+  <main class="wrap layout">
+    <aside class="panel controls" aria-label="Paper selection">
+      <label class="field">
+        <span>Subject</span>
+        <select id="subject"></select>
+      </label>
+
+      <label class="field">
+        <span>Level</span>
+        <select id="level"></select>
+      </label>
+
+      <label class="field">
+        <span>Year</span>
+        <div class="year-row">
+          <button id="prevYear" class="icon-btn" type="button" aria-label="Previous year">‹</button>
+          <select id="year"></select>
+          <button id="nextYear" class="icon-btn" type="button" aria-label="Next year">›</button>
+        </div>
+      </label>
+
+      <div class="field">
+        <span>Show</span>
+        <div id="doc" class="segmented" role="radiogroup"></div>
+      </div>
+
+      <div class="field" id="paperField">
+        <span>Paper</span>
+        <div id="paper" class="segmented" role="radiogroup"></div>
+      </div>
+
+      <div class="field" id="langField">
+        <span>Language</span>
+        <div id="lang" class="segmented" role="radiogroup"></div>
+      </div>
+    </aside>
+
+    <section class="panel viewer-panel" aria-live="polite">
+      <div class="viewer-bar">
+        <div>
+          <div id="title" class="paper-title"></div>
+          <div class="paper-help">Paper not showing? Use <strong>Open in new tab</strong>.</div>
+        </div>
+        <div class="actions">
+          <button id="copy" class="btn ghost" type="button">Copy link</button>
+          <a id="open" class="btn primary" target="_blank" rel="noopener">Open in new tab ↗</a>
+        </div>
+      </div>
+
+      <div class="frame-wrap">
+        <iframe id="frame" title="Exam paper PDF"></iframe>
+
+        <div id="fallback" class="fallback" hidden>
+          <div class="fallback-card">
+            <div class="fallback-icon">📄</div>
+            <h2 id="fallbackTitle">Open the paper</h2>
+            <p id="fallbackText"></p>
+            <a id="fallbackOpen" class="btn primary" target="_blank" rel="noopener">Open in new tab ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    Papers are © State Examinations Commission and are loaded directly from
+    <a href="https://www.examinations.ie" target="_blank" rel="noopener">examinations.ie</a>.
+    This site is unofficial and stores no files.
+  </footer>
+
+  <script src="subjects.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
